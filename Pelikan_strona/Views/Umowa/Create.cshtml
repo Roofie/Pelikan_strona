@@ -1,0 +1,95 @@
+﻿@model Pelikan_strona.Models.UmowaUbezpieczeniowa
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UmowaUbezpieczeniowa</legend>
+        
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SzkodaId, "Szkoda")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SzkodaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.SzkodaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OdziałAgencjiId, "OdziałAgencji")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OdziałAgencjiId", String.Empty)
+            @Html.ValidationMessageFor(model => model.OdziałAgencjiId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NaŻycieId, "Na Życie")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("NaŻycieId", String.Empty)
+            @Html.ValidationMessageFor(model => model.NaŻycieId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TurystyczneId, "Turystyczne")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TurystyczneId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TurystyczneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZawarcia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZawarcia)
+            @Html.ValidationMessageFor(model => model.DataZawarcia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZakończenia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZakończenia)
+            @Html.ValidationMessageFor(model => model.DataZakończenia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KwotaUbezpieczenia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KwotaUbezpieczenia)
+            @Html.ValidationMessageFor(model => model.KwotaUbezpieczenia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KwotaSkładki)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KwotaSkładki)
+            @Html.ValidationMessageFor(model => model.KwotaSkładki)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Zamów" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

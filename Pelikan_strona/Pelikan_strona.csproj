@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -184,11 +186,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UbezpieczeniaController.cs" />
+    <Compile Include="Controllers\UmowaController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CelUbezpieczeń.cs" />
+    <Compile Include="Models\Klient.cs" />
+    <Compile Include="Models\NaŻycie.cs" />
+    <Compile Include="Models\OdziałAgencji.cs" />
+    <Compile Include="Models\Pracownik.cs" />
+    <Compile Include="Models\SumaUbezpieczenia.cs" />
+    <Compile Include="Models\Szkoda.cs" />
+    <Compile Include="Models\Turystyczne.cs" />
+    <Compile Include="Models\UmowaUbezpieczeniowa.cs" />
+    <Compile Include="Models\Wiadomości.cs" />
+    <Compile Include="Models\Zawód.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -305,12 +320,20 @@
     <Content Include="Views\Ubezpieczenia\NaZycie.cshtml" />
     <Content Include="Views\Ubezpieczenia\Turystyczne.cshtml" />
     <Content Include="Views\Ubezpieczenia\Zdrowotne.cshtml" />
+    <Content Include="Views\Umowa\Index.cshtml" />
+    <Content Include="Views\Umowa\Details.cshtml" />
+    <Content Include="Views\Umowa\Create.cshtml" />
+    <Content Include="Views\Umowa\Edit.cshtml" />
+    <Content Include="Views\Umowa\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

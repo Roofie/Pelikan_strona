@@ -1,0 +1,92 @@
+﻿@model Pelikan_strona.Models.UmowaUbezpieczeniowa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UmowaUbezpieczeniowa</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Szkoda.Opis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Szkoda.Opis)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OdziałAgencji.Miasto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OdziałAgencji.Miasto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NaŻycie.NaŻycieId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NaŻycie.NaŻycieId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Turystyczne.TurystyczneId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Turystyczne.TurystyczneId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataZawarcia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataZawarcia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataZakończenia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataZakończenia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.KwotaUbezpieczenia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KwotaUbezpieczenia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.KwotaSkładki)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KwotaSkładki)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Płatność)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Płatność)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UmowaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -79,7 +79,7 @@ namespace Pelikan_strona.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,propertyValues: new { model.Pesel, model.Imie,model.Nazwisko,model.Miasto,model.Ulica ,model.NrDomu, model.NrMieszkania,model.KodPocztowy,model.EmailKlienta,model.DataUrodzenia});
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
