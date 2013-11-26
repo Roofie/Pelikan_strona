@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Pelikan_strona.Models.Szkoda>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UmowaUbezpieczeniowa.User_Pesel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataZgłoszenia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KwotaSzkody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UmowaUbezpieczeniowa.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZgłoszenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KwotaSzkody)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SzkodaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SzkodaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SzkodaId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -13,17 +13,18 @@ namespace Pelikan_strona.Models
     
     public partial class Szkoda
     {
-        public Szkoda()
-        {
-            this.UmowaUbezpieczeniowa = new HashSet<UmowaUbezpieczeniowa>();
-        }
-    
+       
         public int SzkodaId { get; set; }
+        public Nullable<int> UmowaId { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DataZgłoszenia { get; set; }
+        [Display(Name = "Czy zweryfikowano pomyślnie")]
+        public Nullable<bool> CzyPrzyznano{ get; set; }
+        [Display(Name = "Wycena przez klienta")]
         public Nullable<double> KwotaSzkody { get; set; }
         public string Opis { get; set; }
-        public byte[] Zdjęcia { get; set; }
     
-        public virtual ICollection<UmowaUbezpieczeniowa> UmowaUbezpieczeniowa { get; set; }
+        public virtual UmowaUbezpieczeniowa UmowaUbezpieczeniowa { get; set; }
+        public virtual ICollection<Zdjecia> Zdjecia { get; set; }
     }
 }

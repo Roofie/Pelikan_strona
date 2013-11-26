@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Pelikan_strona.Models.Zdjecia>
+
+@{
+    ViewBag.Title = "SzkodyIZdjęcia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SzkodyIZdjęcia</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SzkodaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SciezkaDoZdjecia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SzkodaId)
+        </td>
+        <td>
+            
+            <img src="@Url.Content(item.SciezkaDoZdjecia)" alt="IMAGES"  height="200" width="200"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDodania)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ZdjeciaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ZdjeciaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ZdjeciaId })
+        </td>
+    </tr>
+}
+
+</table>

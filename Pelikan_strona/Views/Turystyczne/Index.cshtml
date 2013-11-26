@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Pelikan_strona.Models.Turystyczne>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IloscOsob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IloscOsob18)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IloscOsobAvg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IloscOsob70)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WyjazdDo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WariantPolisy.NazwaWariantu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IloscOsob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IloscOsob18)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IloscOsobAvg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IloscOsob70)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WyjazdDo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WariantPolisy.NazwaWariantu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TurystyczneId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TurystyczneId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TurystyczneId })
+        </td>
+    </tr>
+}
+
+</table>

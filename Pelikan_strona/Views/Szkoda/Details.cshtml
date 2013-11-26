@@ -1,0 +1,43 @@
+﻿@model Pelikan_strona.Models.Szkoda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Szkoda</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UmowaUbezpieczeniowa.User_Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UmowaUbezpieczeniowa.User_Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataZgłoszenia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataZgłoszenia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.KwotaSzkody)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KwotaSzkody)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Opis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Opis)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SzkodaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

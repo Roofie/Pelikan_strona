@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Pelikan_strona.Models.Wiadomości>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="CSS_Table_Example">
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Pesel)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.UserProfile.UserName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Pra_Pesel)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Pracownik.Pesel)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Temat)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Treść)
+            </td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pesel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pra_Pesel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pracownik.Pesel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treść)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.WiadomościId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.WiadomościId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

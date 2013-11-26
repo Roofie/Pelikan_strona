@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "WidokGłowny";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Panel Użytkownika</h2>
+<div>
+    <nav>
+        <ul id="menu">
+            <li>@Html.ActionLink("Lista dodanych polis", "Index", "UmowaNaZ")</li>
+            <li>@Html.ActionLink("Lista dodanych członków", "Index", "DodajKrewnego")</li>
+        </ul>
+    </nav>
+</div>

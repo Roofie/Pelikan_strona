@@ -1,0 +1,36 @@
+﻿@model Pelikan_strona.Models.NaŻycie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>NaŻycie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SumaUbezpieczenia.SumaUbezpieczeniaId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SumaUbezpieczenia.SumaUbezpieczeniaId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Zawód.NazwaZawodu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Zawód.NazwaZawodu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CelUbezpieczeń.NazwaCelu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CelUbezpieczeń.NazwaCelu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.NaŻycieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

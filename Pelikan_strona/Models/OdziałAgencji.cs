@@ -17,7 +17,7 @@ namespace Pelikan_strona.Models
         {
             this.UmowaUbezpieczeniowa = new HashSet<UmowaUbezpieczeniowa>();
         }
-
+        [Key]
         public int OdziałAgencjiId { get; set; }
         public string Miasto { get; set; }
         public string KodPocztowy { get; set; }

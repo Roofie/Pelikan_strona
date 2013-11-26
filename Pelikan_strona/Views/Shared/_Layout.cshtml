@@ -7,12 +7,16 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <link type="text/css" href="~/Content/css/pepper-grinder/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+        <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
+
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                    <p class="site-title">@Html.ActionLink("Pelikan", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -20,30 +24,50 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Moje Dane", "Index", "Klient")</li>
+                            <li>@Html.ActionLink("Ubezpieczenia", "Index", "Home")</li>
+                            <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+
+                          
+
                         </ul>
                     </nav>
                 </div>
+               
             </div>
+
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
+                @if (Request.IsAuthenticated)
+                {
+                                @*<li> @Html.ActionLink("PanelUżytkownika", "WidokGłowny", "UserPanel")</li>*@
+                                            <div>
+                                                <nav>
+                                                    <ul id="menu1">
+                                                        <li>@Html.ActionLink("Twoje polisy", "Index", "UmowaNaZ")</li>
+                                                        <li>@Html.ActionLink("Twoje osoby do ubezpieczenia", "Index", "DodajKrewnego")</li>
+                                                        <li>@Html.ActionLink("Wiadomości Niedziała", "Index", "Wiadomosci")</li>
+                                                        <li>@Html.ActionLink("Zgłoszone Szkody", "SzkodyIZdjęcia", "Szkoda")</li>
+                                                                            </ul>
+                                                                        </nav>
+                                                                    </div>
+                }
                 @RenderBody()
             </section>
         </div>
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - Pelikan. Kamil Nieścioruk</p>
                 </div>
             </div>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     </body>
 </html>

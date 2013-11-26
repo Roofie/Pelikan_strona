@@ -1,0 +1,57 @@
+﻿@model Pelikan_strona.Models.Turystyczne
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Turystyczne</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IloscOsob)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IloscOsob)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IloscOsob18)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IloscOsob18)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IloscOsobAvg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IloscOsobAvg)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IloscOsob70)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IloscOsob70)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WyjazdDo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WyjazdDo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WariantPolisy.NazwaWariantu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WariantPolisy.NazwaWariantu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TurystyczneId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model Pelikan_strona.Models.CzlonekRodziny
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CzlonekRodziny</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User_Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User_Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Imie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Imie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nazwisko)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nazwisko)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataUrodzenia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataUrodzenia)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CzlonekRodzinyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

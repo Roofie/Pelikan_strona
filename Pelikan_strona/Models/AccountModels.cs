@@ -16,7 +16,10 @@ namespace Pelikan_strona.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<WariantPolisy> Wsriants { get; set; }
+        public DbSet<Zdjecia> Zdjecias { get; set; }
        // public DbSet<Klient> Klients { get; set; }
+        public DbSet<CzlonekRodziny> CzłonekR { get; set; }
         public DbSet<CelUbezpieczeń> CelU { get; set; }
         public DbSet<NaŻycie> NaZ { get; set; }
         public DbSet<OdziałAgencji> Odzial { get; set; }
@@ -34,8 +37,10 @@ namespace Pelikan_strona.Models
     [Table("UserProfile")]
     public class UserProfile
     {
+        
         public UserProfile()
         {
+            this.CzlonekRodziny = new HashSet<CzlonekRodziny>();
             this.UmowaUbezpieczeniowa = new HashSet<UmowaUbezpieczeniowa>();
             this.Wiadomości = new HashSet<Wiadomości>();
         }
@@ -43,7 +48,7 @@ namespace Pelikan_strona.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public string Pesel { get; set; }
+        public string User_Pesel { get; set; }
         public string Miasto { get; set; }
         public string KodPocztowy { get; set; }
         public string Ulica { get; set; }
@@ -53,8 +58,8 @@ namespace Pelikan_strona.Models
         public string Nazwisko { get; set; }
         public Nullable<System.DateTime> DataUrodzenia { get; set; }
         public string EmailKlienta { get; set; }
-     
-    
+
+        public virtual ICollection<CzlonekRodziny> CzlonekRodziny { get; set; }
         public virtual ICollection<UmowaUbezpieczeniowa> UmowaUbezpieczeniowa { get; set; }
         public virtual ICollection<Wiadomości> Wiadomości { get; set; }
     }
@@ -126,7 +131,7 @@ namespace Pelikan_strona.Models
         public string Nazwisko { get; set; }
        // [Required]
         [Display(Name = "Pesel")]
-        public string Pesel { get; set; }
+        public string User_Pesel { get; set; }
        // [Required]
         [Display(Name = "Miasto")]
         public string Miasto { get; set; }

@@ -1,0 +1,59 @@
+﻿@model Pelikan_strona.Models.Szkoda
+
+@{
+    ViewBag.Title = "Nowa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nowa</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Zgłaszanie szkody</legend>
+
+        
+
+       
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.UmowaId)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KwotaSzkody)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KwotaSzkody)
+            @Html.ValidationMessageFor(model => model.KwotaSzkody)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Opis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Opis)
+            @Html.ValidationMessageFor(model => model.Opis)
+        </div>
+        
+        
+        
+        <p>
+            <input type="submit" value="Dodaj zdjęcia" />
+        </p>
+    </fieldset>
+    
+}
+@*<div>@{Html.RenderPartial("DodajZdjęcie");}</div>*@
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

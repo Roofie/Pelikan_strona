@@ -1,0 +1,54 @@
+﻿@model Pelikan_strona.Models.Zdjecia
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("DodajZdjęcie", "Szkoda", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Zdjecia</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SzkodaId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SzkodaId)
+            @Html.ValidationMessageFor(model => model.SzkodaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SciezkaDoZdjecia)
+        </div>
+        <div class="editor-field">
+           
+            <input type="file" name="image" accept="image/*"/>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataDodania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataDodania)
+            @Html.ValidationMessageFor(model => model.DataDodania)
+
+        <p>
+            
+        </p>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $.validator.addMethod('accept', function () { return true; });
+
+</script>

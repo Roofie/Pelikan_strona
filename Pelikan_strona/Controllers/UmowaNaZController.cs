@@ -6,25 +6,35 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Pelikan_strona.Models;
-using WebMatrix.WebData;
 
 namespace Pelikan_strona.Controllers
 {
-    public class UmowaController : Controller
+    [Authorize(Roles = "Klient")]
+    public class UmowaNaZController : Controller
     {
         private UsersContext db = new UsersContext();
 
         //
-        // GET: /Umowa/
+        // GET: /UmowaNaZ/
 
         public ActionResult Index()
         {
-            var umowy = db.Umowy.Include(u => u.UserProfile).Include(u => u.NaŻycie).Include(u => u.OdziałAgencji).Include(u => u.Szkoda).Include(u => u.Turystyczne);
+            var user = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId;
+            var umowy = db.Umowy.Include(u => u.CzlonekRodziny).Include(u => u.UserProfile).Include(u => u.NaŻycie).Include(u => u.OdziałAgencji).Include(u => u.Turystyczne).Where(u => u.UserId == user).Where(u => u.TurystyczneId == null);
             return View(umowy.ToList());
         }
+       
 
+        public ActionResult PolisyTurystyczneKlient()
+        {
+
+            var user = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId;
+            //var umowy = db.Umowy.Include(u => u.UserId).Include(u => u.OdziałAgencji).Include(u => u.Turystyczne).Where(u => u.UserId == user);
+            var umowy = db.Umowy.Include(u => u.CzlonekRodziny).Include(u => u.UserProfile).Include(u => u.NaŻycie).Include(u => u.OdziałAgencji).Include(u => u.Turystyczne).Where(u => u.UserId == user).Where(u=>u.TurystyczneId!=null);
+            return PartialView(umowy.ToList());
+        }
         //
-        // GET: /Umowa/Details/5
+        // GET: /UmowaNaZ/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -37,46 +47,63 @@ namespace Pelikan_strona.Controllers
         }
 
         //
-        // GET: /Umowa/Create
-        [Authorize]
-        public ActionResult Create()
+        // GET: /UmowaNaZ/Create
+
+        public ActionResult Create(NaŻycie na,Turystyczne tur)
         {
+           ViewBag.CzlonekRodzinyId = new SelectList(db.CzłonekR, "CzlonekRodzinyId", "Imie","Nazwisko");
+            ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName");
+            if (na.NaŻycieId == 0)
+            {
+                ViewBag.NaŻycieId = null;
+            }
+            else {
+                ViewBag.NaŻycieId = na.NaŻycieId;
+            }
             
-            ViewBag.NaŻycieId = new SelectList(db.NaZ, "NaŻycieId", "NaŻycieId");
             ViewBag.OdziałAgencjiId = new SelectList(db.Odzial, "OdziałAgencjiId", "Miasto");
-            ViewBag.SzkodaId = new SelectList(db.Szkody, "SzkodaId", "Opis");
-            ViewBag.TurystyczneId = new SelectList(db.UTurystyczne, "TurystyczneId", "TurystyczneId");
+           // ViewBag.TurystyczneId = new SelectList(db.UTurystyczne, "TurystyczneId", "TurystyczneId");
+            if (tur.TurystyczneId == 0)
+            {
+                ViewBag.TurystyczneId = null;
+            }
+            else
+            {
+                ViewBag.TurystyczneId = tur.TurystyczneId;
+            }
             return View();
         }
 
         //
-        // POST: /Umowa/Create
-        [Authorize]
+       
+       
+        // POST: /UmowaNaZ/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UmowaUbezpieczeniowa umowaubezpieczeniowa)
-
+        public ActionResult Create(UmowaUbezpieczeniowa umowaubezpieczeniowa )
         {
-            umowaubezpieczeniowa.UserId = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId;
-            umowaubezpieczeniowa.Pesel = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).Pesel;
             if (ModelState.IsValid)
             {
-                
-                
+               
+                umowaubezpieczeniowa.UserId = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).UserId;
+                umowaubezpieczeniowa.User_Pesel = db.UserProfiles.Single(u => u.UserName == User.Identity.Name).User_Pesel;
                 db.Umowy.Add(umowaubezpieczeniowa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
+            ViewBag.CzlonekRodzinyId = new SelectList(db.CzłonekR, "CzlonekRodzinyId", "Czl_Pesel", umowaubezpieczeniowa.CzlonekRodzinyId);
+            ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName", umowaubezpieczeniowa.UserId);
             ViewBag.NaŻycieId = new SelectList(db.NaZ, "NaŻycieId", "NaŻycieId", umowaubezpieczeniowa.NaŻycieId);
             ViewBag.OdziałAgencjiId = new SelectList(db.Odzial, "OdziałAgencjiId", "Miasto", umowaubezpieczeniowa.OdziałAgencjiId);
-            ViewBag.SzkodaId = new SelectList(db.Szkody, "SzkodaId", "Opis", umowaubezpieczeniowa.SzkodaId);
             ViewBag.TurystyczneId = new SelectList(db.UTurystyczne, "TurystyczneId", "TurystyczneId", umowaubezpieczeniowa.TurystyczneId);
             return View(umowaubezpieczeniowa);
         }
 
+
         //
-        // GET: /Umowa/Edit/5
+        // GET: /UmowaNaZ/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -85,16 +112,16 @@ namespace Pelikan_strona.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CzlonekRodzinyId = new SelectList(db.CzłonekR, "CzlonekRodzinyId", "Czl_Pesel", umowaubezpieczeniowa.CzlonekRodzinyId);
             ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName", umowaubezpieczeniowa.UserId);
             ViewBag.NaŻycieId = new SelectList(db.NaZ, "NaŻycieId", "NaŻycieId", umowaubezpieczeniowa.NaŻycieId);
             ViewBag.OdziałAgencjiId = new SelectList(db.Odzial, "OdziałAgencjiId", "Miasto", umowaubezpieczeniowa.OdziałAgencjiId);
-            ViewBag.SzkodaId = new SelectList(db.Szkody, "SzkodaId", "Opis", umowaubezpieczeniowa.SzkodaId);
             ViewBag.TurystyczneId = new SelectList(db.UTurystyczne, "TurystyczneId", "TurystyczneId", umowaubezpieczeniowa.TurystyczneId);
             return View(umowaubezpieczeniowa);
         }
 
         //
-        // POST: /Umowa/Edit/5
+        // POST: /UmowaNaZ/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -102,21 +129,20 @@ namespace Pelikan_strona.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 db.Entry(umowaubezpieczeniowa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CzlonekRodzinyId = new SelectList(db.CzłonekR, "CzlonekRodzinyId", "Czl_Pesel", umowaubezpieczeniowa.CzlonekRodzinyId);
             ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName", umowaubezpieczeniowa.UserId);
             ViewBag.NaŻycieId = new SelectList(db.NaZ, "NaŻycieId", "NaŻycieId", umowaubezpieczeniowa.NaŻycieId);
             ViewBag.OdziałAgencjiId = new SelectList(db.Odzial, "OdziałAgencjiId", "Miasto", umowaubezpieczeniowa.OdziałAgencjiId);
-            ViewBag.SzkodaId = new SelectList(db.Szkody, "SzkodaId", "Opis", umowaubezpieczeniowa.SzkodaId);
             ViewBag.TurystyczneId = new SelectList(db.UTurystyczne, "TurystyczneId", "TurystyczneId", umowaubezpieczeniowa.TurystyczneId);
             return View(umowaubezpieczeniowa);
         }
 
         //
-        // GET: /Umowa/Delete/5
+        // GET: /UmowaNaZ/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -129,7 +155,7 @@ namespace Pelikan_strona.Controllers
         }
 
         //
-        // POST: /Umowa/Delete/5
+        // POST: /UmowaNaZ/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

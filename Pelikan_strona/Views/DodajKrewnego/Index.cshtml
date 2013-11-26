@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Pelikan_strona.Models.CzlonekRodziny>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="CSS_Table_Example">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.UserProfile.UserName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Imie)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DataUrodzenia)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataUrodzenia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CzlonekRodzinyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CzlonekRodzinyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CzlonekRodzinyId })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

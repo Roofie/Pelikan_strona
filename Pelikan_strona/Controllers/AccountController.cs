@@ -37,6 +37,7 @@ namespace Pelikan_strona.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                
                 return RedirectToLocal(returnUrl);
             }
 
@@ -79,7 +80,7 @@ namespace Pelikan_strona.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,propertyValues: new { model.Pesel, model.Imie,model.Nazwisko,model.Miasto,model.Ulica ,model.NrDomu, model.NrMieszkania,model.KodPocztowy,model.EmailKlienta,model.DataUrodzenia});
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,propertyValues: new { model.User_Pesel, model.Imie, model.Nazwisko,model.Miasto,model.Ulica ,model.NrDomu, model.NrMieszkania,model.KodPocztowy,model.EmailKlienta,model.DataUrodzenia});
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Pelikan_strona.Models.NaŻycie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SumaUbezpieczenia.SumaUbezpieczeniaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zawód.NazwaZawodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CelUbezpieczeń.NazwaCelu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SumaUbezpieczenia.SumaUbezpieczeniaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zawód.NazwaZawodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CelUbezpieczeń.NazwaCelu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NaŻycieId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NaŻycieId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NaŻycieId })
+        </td>
+    </tr>
+}
+
+</table>

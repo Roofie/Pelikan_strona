@@ -1,0 +1,61 @@
+﻿@model Pelikan_strona.Models.CzlonekRodziny
+
+@{
+    ViewBag.Title = "Dodaj członka rodziny";
+}
+
+<h2>Dodaj członka rodziny</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CzlonekRodziny</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Czl_Pesel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Czl_Pesel)
+            @Html.ValidationMessageFor(model => model.Czl_Pesel)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Imie)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Imie)
+            @Html.ValidationMessageFor(model => model.Imie)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nazwisko)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nazwisko)
+            @Html.ValidationMessageFor(model => model.Nazwisko)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataUrodzenia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataUrodzenia)
+            @Html.ValidationMessageFor(model => model.DataUrodzenia)
+        </div>
+
+        <p>
+            <input type="submit" value="Dodaj" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,44 @@
+﻿@model Pelikan_strona.Models.Zdjecia
+
+@{
+    ViewBag.Title = "DodajZdjecie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DodajZdjecie</h2>
+
+@using (Html.BeginForm("DodajZdjecie", "Szkoda", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dodaj zdjęcia do polisy</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SzkodaId)
+        </div>
+
+        <div class="editor-field">
+            <input type="file" name="image" accept="image/*" />
+        </div>
+
+       
+
+        <p>
+            <input type="submit" value="Dodaj" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    $.validator.addMethod('accept', function () { return true; });
+
+    </script>
+}

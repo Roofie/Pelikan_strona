@@ -1,0 +1,62 @@
+﻿@model Pelikan_strona.Models.Szkoda
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Szkoda</legend>
+
+        @Html.HiddenFor(model => model.SzkodaId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UmowaId, "UmowaUbezpieczeniowa")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UmowaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.UmowaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZgłoszenia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZgłoszenia)
+            @Html.ValidationMessageFor(model => model.DataZgłoszenia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KwotaSzkody)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KwotaSzkody)
+            @Html.ValidationMessageFor(model => model.KwotaSzkody)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Opis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Opis)
+            @Html.ValidationMessageFor(model => model.Opis)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -16,11 +16,11 @@
         @Html.HiddenFor(model => model.UmowaId)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Pesel)
+            @Html.LabelFor(model => model.User_Pesel)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Pesel)
-            @Html.ValidationMessageFor(model => model.Pesel)
+            @Html.EditorFor(model => model.User_Pesel)
+            @Html.ValidationMessageFor(model => model.User_Pesel)
         </div>
 
         <div class="editor-label">
@@ -32,22 +32,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.SzkodaId, "Szkoda")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("SzkodaId", String.Empty)
-            @Html.ValidationMessageFor(model => model.SzkodaId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.OdziałAgencjiId, "OdziałAgencji")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("OdziałAgencjiId", String.Empty)
-            @Html.ValidationMessageFor(model => model.OdziałAgencjiId)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.NaŻycieId, "NaŻycie")
         </div>
         <div class="editor-field">
@@ -56,11 +40,35 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Czl_Pesel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Czl_Pesel)
+            @Html.ValidationMessageFor(model => model.Czl_Pesel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CzlonekRodzinyId, "CzlonekRodziny")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CzlonekRodzinyId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CzlonekRodzinyId)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.TurystyczneId, "Turystyczne")
         </div>
         <div class="editor-field">
             @Html.DropDownList("TurystyczneId", String.Empty)
             @Html.ValidationMessageFor(model => model.TurystyczneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OdziałAgencjiId, "OdziałAgencji")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OdziałAgencjiId", String.Empty)
+            @Html.ValidationMessageFor(model => model.OdziałAgencjiId)
         </div>
 
         <div class="editor-label">
@@ -77,22 +85,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.DataZakończenia)
             @Html.ValidationMessageFor(model => model.DataZakończenia)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.KwotaUbezpieczenia)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.KwotaUbezpieczenia)
-            @Html.ValidationMessageFor(model => model.KwotaUbezpieczenia)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.KwotaSkładki)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.KwotaSkładki)
-            @Html.ValidationMessageFor(model => model.KwotaSkładki)
         </div>
 
         <div class="editor-label">

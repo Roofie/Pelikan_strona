@@ -1,0 +1,61 @@
+﻿@model Pelikan_strona.Models.Wiadomości
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Wiadomości</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pra_Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pra_Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pracownik.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pracownik.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Temat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Temat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Treść)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Treść)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

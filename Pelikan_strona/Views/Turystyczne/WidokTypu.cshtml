@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Pelikan_strona.Models.WariantPolisy>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazwaWariantu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KosztLeczenia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NNW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowrotOsobBliskich)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OCwPrywatnym)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BagazPodrozny)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ratownictwo)
+        </th>
+        <th></th>
+    </tr>
+    @Model
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaWariantu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KosztLeczenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NNW)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowrotOsobBliskich)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OCwPrywatnym)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BagazPodrozny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ratownictwo)
+        </td>
+       
+    </tr>
+}
+
+
+</table>

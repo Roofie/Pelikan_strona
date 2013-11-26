@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Pelikan_strona.Models.UmowaUbezpieczeniowa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Polisy zdrowotne</h2>
+
+<div class="CSS_Table_Example">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.UserProfile.Imie)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.UserProfile.Nazwisko)
+        </td>
+        @*<td>
+            @Html.DisplayNameFor(model => model.Czl_Pesel)
+        </td>*@
+        <td>
+            @Html.DisplayNameFor(model => model.CzlonekRodziny.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.CzlonekRodziny.Imie)
+            </td>
+        <td>
+            @Html.DisplayNameFor(model => model.CzlonekRodziny.Nazwisko)
+            </td>
+        @*<td>
+            @Html.DisplayNameFor(model => model.Turystyczne.TurystyczneId)
+        </td>*@
+        <td>
+            @Html.DisplayNameFor(model => model.OdziałAgencji.Miasto)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DataZawarcia)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DataZakończenia)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Płatność)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfile.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfile.Nazwisko)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Czl_Pesel)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CzlonekRodziny.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CzlonekRodziny.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CzlonekRodziny.Nazwisko)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Turystyczne.TurystyczneId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.OdziałAgencji.Miasto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZawarcia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZakończenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Płatność)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.UmowaId })|
+            @Html.ActionLink("Zgłoś szkodę", "Nowa", "Szkoda", new { UmowaId = item.UmowaId },null)
+            @Html.ActionLink("Dodane Zdjęcia", "SzkodyIZdjęcia", "Szkoda", new { id = item.UmowaId }, null)
+
+
+                     
+           
+            
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+<h2>Polisy turystyczne</h2>
+
+<div class="CSS_Table_Example">
+
+    @{Html.RenderAction("PolisyTurystyczneKlient");}
+
+</div>

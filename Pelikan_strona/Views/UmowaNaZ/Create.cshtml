@@ -1,0 +1,141 @@
+﻿@model Pelikan_strona.Models.UmowaUbezpieczeniowa
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Etap II</legend>
+
+        @*<div class="editor-label" style="display: none;">
+            @Html.LabelFor(model => model.User_Pesel)
+            </div>
+        <div class="editor-field" style="display: none;">
+            @Html.EditorFor(model => model.User_Pesel)
+                @Html.ValidationMessageFor(model => model.User_Pesel)
+         </div>*@
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.UserId, "UserProfile")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UserId", String.Empty)
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>*@
+        
+
+        <div class="editor-label">
+           @Html.HiddenFor(model => model.NaŻycieId, new { Value = ViewBag.NaŻycieId })
+        </div>
+       
+
+        <div class="editor-label" id="człowiekP" style="display: none;">
+            @Html.LabelFor(model => model.Czl_Pesel)
+            </div>
+        <div class="editor-field" id="człowiekP1" style="display: none;">
+            @Html.EditorFor(model => model.Czl_Pesel)
+                @Html.ValidationMessageFor(model => model.Czl_Pesel)
+                </div>
+
+        <div class="editor-label"  id="człowiekId" style="display: none;">
+            @Html.LabelFor(model => model.CzlonekRodzinyId, "CzlonekRodziny")
+            </div>
+        <div class="editor-field" id="człowiekId1" style="display: none;">
+            @Html.DropDownList("CzlonekRodzinyId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CzlonekRodzinyId)
+       </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.TurystyczneId, "Turystyczne")*@
+            @Html.HiddenFor(model => model.TurystyczneId, new { Value = ViewBag.TurystyczneId })
+        </div>
+        @*<div class="editor-field">
+            @Html.DropDownList("TurystyczneId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TurystyczneId)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OdziałAgencjiId, "OdziałAgencji")
+        </div>
+        <div class="editor-field">
+            
+            @Html.DropDownList("OdziałAgencjiId", String.Empty)
+            @Html.ValidationMessageFor(model => model.OdziałAgencjiId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZawarcia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZawarcia)
+            @Html.ValidationMessageFor(model => model.DataZawarcia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZakończenia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZakończenia)
+            @Html.ValidationMessageFor(model => model.DataZakończenia)
+           
+        </div>
+       
+
+        
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.Płatność)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Płatność)
+            @Html.ValidationMessageFor(model => model.Płatność)
+        </div>*@
+      
+        <p>
+
+            <input type="checkbox" onclick="check()" id="ukryj"  /> Dla członka rodziny
+        </p>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+ 
+
+
+function check() {
+            if (document.getElementById("ukryj").checked == true) {
+                document.getElementById('człowiekP').style.display = "block";
+                document.getElementById('człowiekP1').style.display = "block";
+                document.getElementById('człowiekId').style.display = "block";
+                document.getElementById('człowiekId1').style.display = "block";
+            }
+            if (document.getElementById("ukryj").checked == false) {
+                document.getElementById('człowiekP').style.display = "none";
+                document.getElementById('człowiekP1').style.display = "none";
+                document.getElementById('człowiekId').style.display = "none";
+                document.getElementById('człowiekId1').style.display = "none";
+            }
+        };
+        $(function () {
+            $("#DataZako_czenia").datepicker();
+        });
+        $(function () {
+            $("#DataZawarcia").datepicker();
+        });
+        </script>
+}

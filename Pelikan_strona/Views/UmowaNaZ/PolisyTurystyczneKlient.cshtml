@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Pelikan_strona.Models.UmowaUbezpieczeniowa>
+
+
+<table>
+    <tr>
+        <td >
+            @Html.DisplayNameFor(model => model.User_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.UserId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.NaŻycieId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.CzlonekRodzinyId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.TurystyczneId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.OdziałAgencjiId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DataZawarcia)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DataZakończenia)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Płatność)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User_Pesel)
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NaŻycieId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Czl_Pesel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CzlonekRodzinyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TurystyczneId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OdziałAgencjiId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZawarcia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataZakończenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Płatność)
+        </td>
+       <td>
+           @Html.ActionLink("Zgłoś szkodę", "Nowa", "Szkoda", new { UmowaId = item.UmowaId }, null)
+           @Html.ActionLink("Dodane Zdjęcia", "SzkodyIZdjęcia", "Szkoda", new { UmowaId = item.UmowaId }, null)
+           
+       </td>
+    </tr>
+}
+
+</table>

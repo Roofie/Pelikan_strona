@@ -1,0 +1,57 @@
+﻿@model Pelikan_strona.Models.NaŻycie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NaŻycie</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SumaUbezpieczeniaId, "SumaUbezpieczenia")
+               
+         </div>
+        
+        
+        <div class="editor-field">
+            @Html.DropDownList("SumaUbezpieczeniaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.SumaUbezpieczeniaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ZawódId, "Zawód")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ZawódId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ZawódId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CelUbezpieczeńId, "CelUbezpieczeń")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CelUbezpieczeńId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CelUbezpieczeńId)
+        </div>
+      
+        
+        <p>
+            
+            <input type="submit" value="Dalej" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

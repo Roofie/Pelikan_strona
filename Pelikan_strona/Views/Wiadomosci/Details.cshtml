@@ -1,0 +1,57 @@
+﻿@model Pelikan_strona.Models.Wiadomości
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Wiadomości</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pra_Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pra_Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pracownik.Pesel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pracownik.Pesel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Temat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Temat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Treść)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Treść)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.WiadomościId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
